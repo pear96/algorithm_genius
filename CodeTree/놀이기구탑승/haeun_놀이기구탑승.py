@@ -41,7 +41,6 @@ def take_seat(idx: int) -> None:
     # 비교를 위한 변수(가장 많은 친구, 가장 많은 빈칸)
     row, col = N+1, N+1
     max_empty, max_friend = 0, 0
-    # candidate = []
 
     for r in range(N):
         for c in range(N):
@@ -62,15 +61,10 @@ def take_seat(idx: int) -> None:
                 #    단 이때 격자를 벗어나는 칸은 비어있는 칸으로 간주하지 않습니다.
                 # 3. 만약 2번 조건까지 동일한 위치가 여러 곳이라면, 그 중 행 번호가 가장 작은 위치로 갑니다.
                 # 4. 만약 3번 조건까지 동일한 위치가 여러 곳이라면, 그 중 열 번호가 가장 작은 위치로 갑니다.
-                # heapq.heappush(candidate, [-friend, -empty, r, c])
-
-                # if friend > max_friend or (friend == max_friend and empty > max_empty):
-                #     max_friend, max_empty, row, col = friend, empty, r, c
 
                 if (max_friend, max_empty, -row, -col) < (friend, empty, -r, -c):
                     max_friend, max_empty, row, col = friend, empty, r, c
 
-    # _, _, row, col = heapq.heappop(candidate)
     seat[row][col] = num
 
 
@@ -95,7 +89,6 @@ def solution() -> None:
     init()
     for idx in range(cnt):
         take_seat(idx)
-        # print_seat()
     print(get_score())
 
 
